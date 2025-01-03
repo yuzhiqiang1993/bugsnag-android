@@ -19,3 +19,4 @@ include(
     ":bugsnag-plugin-android-okhttp",
     ":bugsnag-benchmarks"
 )
+include(":app")

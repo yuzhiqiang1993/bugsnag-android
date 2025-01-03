@@ -31,4 +31,14 @@ allprojects {
             options.compilerArgs.addAll(listOf("-Xlint:all", "-Werror"))
         }
     }
+    configurations.configureEach {
+        resolutionStrategy {
+            //依赖替换
+            dependencySubstitution {
+
+                //替换kotlin为指定版本
+                substitute(module("org.jetbrains.kotlin:kotlin-stdlib")).using(module("org.jetbrains.kotlin:kotlin-stdlib:1.5.10"))
+            }
+        }
+    }
 }

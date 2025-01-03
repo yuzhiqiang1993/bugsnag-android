@@ -1,2 +1,11 @@
 include ":app"
 rootProject.name = "Bugsnag Example"
+
+
+//本地依赖
+include(":bugsnag-android-core")
+project(":bugsnag-android-core").projectDir = file('/Users/yuzhiqiang/workspace/Android/personal/bugsnag-android/bugsnag-android-core')
+include(":bugsnag-plugin-android-anr")
+project(":bugsnag-plugin-android-anr").projectDir = file('/Users/yuzhiqiang/workspace/Android/personal/bugsnag-android/bugsnag-plugin-android-anr')
+include(":bugsnag-plugin-android-ndk")
+project(":bugsnag-plugin-android-ndk").projectDir = file('/Users/yuzhiqiang/workspace/Android/personal/bugsnag-android/bugsnag-plugin-android-ndk')
