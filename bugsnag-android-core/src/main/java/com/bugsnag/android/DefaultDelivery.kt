@@ -24,7 +24,8 @@ internal class DefaultDelivery(
 
     override fun deliver(payload: EventPayload, deliveryParams: DeliveryParams): DeliveryStatus {
         val json = payload.trimToSize().toByteArray()
-        val status = deliver(deliveryParams.endpoint, json, payload.integrityToken, deliveryParams.headers)
+        val status =
+            deliver(deliveryParams.endpoint, json, payload.integrityToken, deliveryParams.headers)
         logger.i("Error API request finished with status $status")
         return status
     }
@@ -100,8 +101,8 @@ internal class DefaultDelivery(
         runCatching {
             logger.i(
                 "Request completed with code $code, " +
-                    "message: ${conn.responseMessage}, " +
-                    "headers: ${conn.headerFields}"
+                        "message: ${conn.responseMessage}, " +
+                        "headers: ${conn.headerFields}"
             )
         }
         runCatching {
