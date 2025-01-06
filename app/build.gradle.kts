@@ -19,8 +19,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -40,4 +39,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 //    implementation("com.google.android.material:material:1.11.0")
 //    implementation "com.squareup.okhttp3:okhttp:4.12.0"
+
+//    implementation("com.xeonyu:application:1.0.9")
+//    implementation("com.xeonyu:logger:1.2.1")
+
+//    implementation(project(":bugsnag-android"))
+    implementation(project(":bugsnag-android-core"))
+    implementation(project(":bugsnag-plugin-android-anr"))
+    implementation(project(":bugsnag-plugin-android-ndk"))
 }
