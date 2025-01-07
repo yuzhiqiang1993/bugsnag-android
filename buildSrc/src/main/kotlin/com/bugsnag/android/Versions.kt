@@ -7,11 +7,15 @@ import org.gradle.api.JavaVersion
  */
 object Versions {
     // Note minSdkVersion must be >=21 for 64 bit architectures
-    val minSdkVersion = 14
+    val minSdkVersion = 21
     val compileSdkVersion = 34
     val ndk = "23.1.7779620"
-    val java = JavaVersion.VERSION_1_8
-    val kotlin = "1.5.10"
+
+    //    val java = JavaVersion.VERSION_1_8
+    val java = JavaVersion.VERSION_11
+
+    //    val kotlin = "1.5.10"
+    val kotlin = "1.7.21"
     val kotlinLang = "1.5"
     val cmakeVersion = "3.22.1"
 

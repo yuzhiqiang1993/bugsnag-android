@@ -8,8 +8,8 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.4")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
-//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
+//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.1")
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.9.0")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:10.2.0")
@@ -40,7 +40,7 @@ allprojects {
 
                 //替换kotlin为指定版本
 //                substitute(module("org.jetbrains.kotlin:kotlin-stdlib")).using(module("org.jetbrains.kotlin:kotlin-stdlib:1.7.21"))
-                substitute(module("org.jetbrains.kotlin:kotlin-stdlib")).using(module("org.jetbrains.kotlin:kotlin-stdlib:1.5.10"))
+//                substitute(module("org.jetbrains.kotlin:kotlin-stdlib")).using(module("org.jetbrains.kotlin:kotlin-stdlib:1.5.10"))
             }
         }
     }

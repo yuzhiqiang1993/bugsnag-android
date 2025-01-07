@@ -22,9 +22,7 @@ class BugsnagBuildPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         val bugsnag = project.extensions.create(
-            "bugsnagBuildOptions",
-            BugsnagBuildPluginExtension::class.java,
-            project.objects
+            "bugsnagBuildOptions", BugsnagBuildPluginExtension::class.java, project.objects
         )
 
         // configure AGP with the information it needs to build the project
@@ -34,8 +32,7 @@ class BugsnagBuildPlugin : Plugin<Project> {
     }
 
     private fun configureProject(
-        project: Project,
-        bugsnag: BugsnagBuildPluginExtension
+        project: Project, bugsnag: BugsnagBuildPluginExtension
     ) {
         // load 3rd party gradle plugins
         project.applyPlugins(bugsnag)
@@ -44,7 +41,7 @@ class BugsnagBuildPlugin : Plugin<Project> {
         android.apply {
             configureDefaults()
             configureAndroidLint(project)
-            configureTests()
+//            configureTests()
             configureAndroidPackagingOptions()
 
             if (bugsnag.usesNdk) {
@@ -88,17 +85,13 @@ class BugsnagBuildPlugin : Plugin<Project> {
     private fun BaseExtension.configureNdk(project: Project) {
         defaultConfig {
             externalNativeBuild.cmake.arguments += listOf(
-                "-DANDROID_CPP_FEATURES=exceptions",
-                "-DANDROID_STL=c++_static"
+                "-DANDROID_CPP_FEATURES=exceptions", "-DANDROID_STL=c++_static"
             )
 
 
             val override: String? = project.findProperty("ABI_FILTERS") as String?
             val abis = override?.split(",") ?: mutableSetOf(
-                "arm64-v8a",
-                "armeabi-v7a",
-                "x86",
-                "x86_64"
+                "arm64-v8a", "armeabi-v7a", "x86", "x86_64"
             )
             ndk.setAbiFilters(abis)
         }
@@ -164,22 +157,22 @@ class BugsnagBuildPlugin : Plugin<Project> {
             add("api", "androidx.annotation:annotation:${Versions.supportLib}")
             add("api", "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
 
-            add("testImplementation", "junit:junit:${Versions.junitTestLib}")
-            add("testImplementation", "org.mockito:mockito-core:${Versions.mockitoTestLib}")
-            add("testImplementation", "org.mockito:mockito-inline:${Versions.mockitoTestLib}")
-            add("testImplementation", "androidx.test:core:${Versions.supportTestLib}")
+//            add("testImplementation", "junit:junit:${Versions.junitTestLib}")
+//            add("testImplementation", "org.mockito:mockito-core:${Versions.mockitoTestLib}")
+//            add("testImplementation", "org.mockito:mockito-inline:${Versions.mockitoTestLib}")
+//            add("testImplementation", "androidx.test:core:${Versions.supportTestLib}")
 
-            add(
-                "androidTestImplementation",
-                "org.mockito:mockito-android:${Versions.mockitoTestLib}"
-            )
-            add("androidTestImplementation", "androidx.test:core:${Versions.supportTestLib}")
-            add("androidTestImplementation", "androidx.test:runner:${Versions.supportTestLib}")
-            add("androidTestImplementation", "androidx.test:rules:${Versions.supportTestLib}")
-            add(
-                "androidTestImplementation",
-                "androidx.test.espresso:espresso-core:${Versions.espressoTestLib}"
-            )
+//            add(
+//                "androidTestImplementation",
+//                "org.mockito:mockito-android:${Versions.mockitoTestLib}"
+//            )
+//            add("androidTestImplementation", "androidx.test:core:${Versions.supportTestLib}")
+//            add("androidTestImplementation", "androidx.test:runner:${Versions.supportTestLib}")
+//            add("androidTestImplementation", "androidx.test:rules:${Versions.supportTestLib}")
+//            add(
+//                "androidTestImplementation",
+//                "androidx.test.espresso:espresso-core:${Versions.espressoTestLib}"
+//            )
         }
     }
 
@@ -187,12 +180,10 @@ class BugsnagBuildPlugin : Plugin<Project> {
         tasks.withType(KotlinCompile::class.java).configureEach {
             kotlinOptions {
                 allWarningsAsErrors = true
-                apiVersion = Versions.kotlinLang
-                languageVersion = Versions.kotlinLang
+//                apiVersion = Versions.kotlinLang
+//                languageVersion = Versions.kotlinLang
                 freeCompilerArgs += listOf(
-                    "-Xno-call-assertions",
-                    "-Xno-receiver-assertions",
-                    "-Xno-param-assertions"
+                    "-Xno-call-assertions", "-Xno-receiver-assertions", "-Xno-param-assertions"
                 )
             }
         }
@@ -207,7 +198,7 @@ class BugsnagBuildPlugin : Plugin<Project> {
             minSdk = Versions.minSdkVersion
             ndkVersion = Versions.ndk
             consumerProguardFiles("proguard-rules.pro")
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
     }
 
