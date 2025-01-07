@@ -21,13 +21,14 @@ class CustomerDelivery : Delivery {
     }
 
     override fun deliver(payload: Session, deliveryParams: DeliveryParams): DeliveryStatus {
-
+        Log.i(TAG, "deliver Session  payload: ${payload},deliveryParams:${deliveryParams}")
         return DeliveryStatus.DELIVERED
     }
 
     override fun deliver(payload: EventPayload, deliveryParams: DeliveryParams): DeliveryStatus {
-        Log.i(TAG, "deliver payload: ${payload.event},deliveryParams:${deliveryParams}")
-
+        Log.i(
+            TAG, "deliver EventPayload payload: ${payload.event},deliveryParams:${deliveryParams}"
+        )
         return DeliveryStatus.DELIVERED
     }
 }

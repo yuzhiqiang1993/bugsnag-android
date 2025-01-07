@@ -40,8 +40,8 @@ dependencies {
 //    implementation("com.google.android.material:material:1.11.0")
 //    implementation "com.squareup.okhttp3:okhttp:4.12.0"
 
-//    implementation("com.xeonyu:application:1.0.9")
-//    implementation("com.xeonyu:logger:1.2.1")
+    implementation("com.xeonyu:application:1.0.9")
+    implementation("com.xeonyu:logger:1.2.1")
 
 //    implementation(project(":bugsnag-android"))
     implementation(project(":bugsnag-android-core"))

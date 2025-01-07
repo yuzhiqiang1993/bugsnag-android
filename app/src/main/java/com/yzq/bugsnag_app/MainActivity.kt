@@ -18,6 +18,13 @@ class MainActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.btn_native).setOnClickListener {
 
         }
+
+        findViewById<AppCompatButton>(R.id.btn_anr).setOnClickListener {
+            //模拟ANR
+            while (true) {
+
+            }
+        }
     }
 
 

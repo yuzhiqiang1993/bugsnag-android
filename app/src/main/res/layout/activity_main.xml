@@ -11,7 +11,7 @@
         android:id="@+id/btn_java"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Java Crash" />
+        android:text="模拟Java/Kotlin异常" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -19,5 +19,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Native Crash" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_anr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="模拟ANR" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
