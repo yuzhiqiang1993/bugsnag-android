@@ -1,4 +1,4 @@
-package com.yzq.app
+package com.example.bugsnag.android
 
 import com.bugsnag.android.Delivery
 import com.bugsnag.android.DeliveryParams
@@ -21,7 +21,6 @@ class CustomerDelivery : Delivery {
     }
 
     override fun deliver(payload: Session, deliveryParams: DeliveryParams): DeliveryStatus {
-        Logger.it(TAG, "deliver Session")
         val jsonBytes = payload.toByteArray()
         //转成json
         val json = String(jsonBytes)
@@ -42,9 +41,7 @@ class CustomerDelivery : Delivery {
         //转成json
         val json = String(jsonBytes)
 
-        Logger.jsont(
-            TAG, json
-        )
+        Logger.jsont(TAG, json)
         //上传处理后的精简json数据
 
         //上传完整的文件数据

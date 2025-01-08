@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.bugsnag.android"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
@@ -43,11 +43,14 @@ android {
 
 dependencies {
     implementation "com.bugsnag:bugsnag-android:6.10.0"
-//    implementation "com.bugsnag:bugsnag-plugin-android-okhttp:6.10.0"
+    implementation "com.bugsnag:bugsnag-plugin-android-okhttp:6.10.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.google.android.material:material:1.11.0"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
+
+    implementation("com.xeonyu:application:1.0.9")
+    implementation("com.xeonyu:logger:1.2.1")
 }
 
 apply plugin: "com.bugsnag.android.gradle"

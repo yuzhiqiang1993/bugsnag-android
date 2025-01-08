@@ -1,10 +1,9 @@
 package com.yzq.app
 
 import android.os.Bundle
-import android.os.SystemClock
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import com.bugsnag.android.Bugsnag
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<AppCompatButton>(R.id.btn_java).setOnClickListener {
-            Bugsnag.notify(Exception("Java Exception"))
-
+//            Bugsnag.notify(Exception("Java Exception"))
+            throw Exception("Java Exception")
         }
 
         findViewById<AppCompatButton>(R.id.btn_native).setOnClickListener {
@@ -35,7 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<AppCompatButton>(R.id.btn_anr).setOnClickListener {
             //模拟ANR
-            SystemClock.sleep(6000) // 模拟 20 秒的延迟，触发 ANR
+            Looper.getMainLooper().run {
+                Thread.sleep(20 * 1000) // 主线程阻塞
+            }
         }
     }
 

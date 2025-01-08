@@ -24,7 +24,12 @@ class App : Application() {
             delivery = CustomerDelivery()
             logger = BugsnagLogger()
             autoDetectErrors = true
+            autoTrackSessions = false//不跟踪会话信息
+            enabledErrorTypes.anrs = true//捕获ANR
+            enabledErrorTypes.ndkCrashes = true//捕获Native异常
+            enabledErrorTypes.unhandledExceptions = true//捕获未捕获异常
         }
+
 
         Bugsnag.start(this, configuration)
 
