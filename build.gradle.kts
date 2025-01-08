@@ -10,6 +10,8 @@ buildscript {
         classpath("com.android.tools.build:gradle:7.0.4")
 //        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
+        //这个插件是用于自动上传混淆mapping文件的，这里不需要。
+//        classpath("com.bugsnag:bugsnag-android-gradle-plugin:7.+")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.1")
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.9.0")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:10.2.0")

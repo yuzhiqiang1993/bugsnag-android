@@ -1,4 +1,4 @@
-package com.yzq.bugsnag_app
+package com.yzq.app
 
 import com.bugsnag.android.Logger
 

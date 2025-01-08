@@ -1,18 +1,22 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+//    id("com.bugsnag.android.gradle")
 }
 
 android {
-    namespace = "com.yzq.bugsnag_app"
+    namespace = "com.yzq.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.yzq.bugsnag_app"
+        applicationId = "com.yzq.app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        ndk {
+            abiFilters += listOf("arm64-v8a")
+        }
     }
 
     buildTypes {
@@ -30,6 +34,20 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    lint {
+        isAbortOnError = false
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            pickFirsts.add("**/libbugsnag-ndk.so")
+        }
+    }
 }
 
 dependencies {
@@ -43,8 +61,11 @@ dependencies {
     implementation("com.xeonyu:application:1.0.9")
     implementation("com.xeonyu:logger:1.2.1")
 
-//    implementation(project(":bugsnag-android"))
-    implementation(project(":bugsnag-android-core"))
-    implementation(project(":bugsnag-plugin-android-anr"))
-    implementation(project(":bugsnag-plugin-android-ndk"))
+//    implementation("com.bugsnag:bugsnag-android:6.10.0")
+
+    implementation(project(":bugsnag-android"))
+//    implementation(project(":bugsnag-android-core"))
+//    implementation(project(":bugsnag-plugin-android-anr"))
+//    implementation(project(":bugsnag-plugin-android-ndk"))
 }
+

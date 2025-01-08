@@ -17,6 +17,7 @@ fun findCurrentProcessName(): String {
             VERSION.SDK_INT >= VERSION_CODES.P -> {
                 Application.getProcessName()
             }
+
             else -> {
                 // see https://stackoverflow.com/questions/19631894
                 @SuppressLint("PrivateApi")
