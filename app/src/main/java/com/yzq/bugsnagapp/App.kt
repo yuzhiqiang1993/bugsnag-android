@@ -1,4 +1,4 @@
-package com.yzq.app
+package com.yzq.bugsnagapp
 
 import android.app.Application
 import com.bugsnag.android.Bugsnag
@@ -20,7 +20,7 @@ class App : Application() {
             )
         )
 
-        val configuration = Configuration("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx").apply {
+        val configuration = Configuration("yzq").apply {
             delivery = CustomerDelivery()
             logger = BugsnagLogger()
             autoDetectErrors = true

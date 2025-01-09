@@ -1,4 +1,4 @@
-package com.yzq.app
+package com.yzq.bugsnagapp
 
 import android.os.Bundle
 import android.os.Looper

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.yzq.app"
+    namespace = "com.yzq.bugsnagapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.yzq.app"
+        applicationId = "com.yzq.bugsnagapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

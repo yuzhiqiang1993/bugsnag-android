@@ -216,7 +216,7 @@ internal fun sanitiseConfiguration(
     connectivity: Connectivity,
     backgroundTaskService: BackgroundTaskService
 ): ImmutableConfig {
-    validateApiKey(configuration.apiKey)
+//    validateApiKey(configuration.apiKey)
     val packageName = appContext.packageName
     val packageManager = appContext.packageManager
     val packageInfo = runCatching { packageManager.getPackageInfo(packageName, 0) }.getOrNull()
