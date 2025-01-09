@@ -5,6 +5,10 @@ import com.bugsnag.android.DeliveryParams
 import com.bugsnag.android.DeliveryStatus
 import com.bugsnag.android.EventPayload
 import com.bugsnag.android.Session
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.yzq.bugsnagapp.data.PayloadData
+import com.yzq.bugsnagapp.ext.toCrashInfo
 import com.yzq.logger.Logger
 
 
@@ -34,21 +38,47 @@ class CustomerDelivery : Delivery {
     }
 
     override fun deliver(
-        payload: EventPayload,
-        deliveryParams: DeliveryParams
+        payload: EventPayload, deliveryParams: DeliveryParams
     ): DeliveryStatus {
-        val jsonBytes = payload.trimToSize().toByteArray()
 
-        //转成json
-        val json = String(jsonBytes)
 
-        Logger.jsont(
-            TAG, json
-        )
-        //上传处理后的精简json数据
+        val eventFile = payload.eventFile
 
-        //上传完整的文件数据
+        Logger.it(TAG, "deliver eventFile:${eventFile?.name}")
 
-        return DeliveryStatus.DELIVERED
+
+        kotlin.runCatching {
+            val jsonStr = String(payload.trimToSize().toByteArray())
+            Logger.it(TAG, jsonStr)
+
+
+            //把json转成对象
+            val eventData = parseJsonToOriginalEventData(jsonStr)
+            //把json转成对象
+            val crashInfo = eventData?.events?.get(0)?.toCrashInfo()
+
+            Logger.it(TAG, "deliver crashInfo:${crashInfo}")
+        }.onFailure {
+            it.printStackTrace()
+        }
+
+
+        return DeliveryStatus.UNDELIVERED
+    }
+
+    private fun parseJsonToOriginalEventData(jsonStr: String): PayloadData? {
+
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val adapter = moshi.adapter(PayloadData::class.java)
+
+        return try {
+            adapter.fromJson(jsonStr)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 }

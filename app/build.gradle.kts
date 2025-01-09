@@ -62,8 +62,11 @@ dependencies {
     implementation("com.xeonyu:logger:1.2.1")
 
 //    implementation("com.bugsnag:bugsnag-android:6.10.0")
-
     implementation(project(":bugsnag-android"))
+
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+
 //    implementation(project(":bugsnag-android-core"))
 //    implementation(project(":bugsnag-plugin-android-anr"))
 //    implementation(project(":bugsnag-plugin-android-ndk"))

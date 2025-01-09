@@ -20,6 +20,7 @@ class App : Application() {
             )
         )
 
+
         val configuration = Configuration("yzq").apply {
             delivery = CustomerDelivery()
             logger = BugsnagLogger()
@@ -32,7 +33,7 @@ class App : Application() {
 
 
         Bugsnag.start(this, configuration)
-
+        Bugsnag.leaveBreadcrumb("App Loaded")
 
     }
 

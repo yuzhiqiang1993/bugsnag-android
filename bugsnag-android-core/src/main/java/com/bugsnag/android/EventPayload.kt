@@ -23,7 +23,7 @@ class EventPayload @JvmOverloads internal constructor(
     var event: Event? = event
         internal set
 
-    internal var eventFile: File? = eventFile
+    var eventFile: File? = eventFile
         private set
 
     private var cachedBytes: ByteArray? = null
@@ -38,9 +38,9 @@ class EventPayload @JvmOverloads internal constructor(
         val event = this.event
 
         return event?.impl?.getErrorTypesFromStackframes() ?: (
-            eventFile?.let { EventFilenameInfo.fromFile(it, config).errorTypes }
-                ?: emptySet()
-            )
+                eventFile?.let { EventFilenameInfo.fromFile(it, config).errorTypes }
+                    ?: emptySet()
+                )
     }
 
     private fun decodedEvent(): Event {

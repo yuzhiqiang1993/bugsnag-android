@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<AppCompatButton>(R.id.btn_java).setOnClickListener {
 //            Bugsnag.notify(Exception("Java Exception"))
-            throw Exception("Java Exception")
+            throw Exception("自定义的Java异常")
         }
 
         findViewById<AppCompatButton>(R.id.btn_native).setOnClickListener {
