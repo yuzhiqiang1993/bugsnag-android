@@ -7,24 +7,24 @@ data class OriginalEventData(
     val context: String?, // 当前上下文，一般是当前Activity或功能模块的名称，例如MainActivity
     val device: Device?, // 设备相关信息
     val exceptions: List<Exception?>?, // 异常信息列表
-    val featureFlags: List<Any?>?, // 特性标志，记录了当前应用启用了哪些实验性功能
+//    val featureFlags: List<Any?>?, // 特性标志，记录了当前应用启用了哪些实验性功能
     val metaData: MetaData?, // 元数据，自定义附加信息
     val projectPackages: List<String?>?, // 项目包名，用于识别是否为应用内部代码
-    val severity: String?, // 严重性，可能值包括"info", "warning", "error"
-    val severityReason: SeverityReason?, // 严重性原因，描述为什么被标记为特定的严重性
+//    val severity: String?, // 严重性，可能值包括"info", "warning", "error"
+//    val severityReason: SeverityReason?, // 严重性原因，描述为什么被标记为特定的严重性
     val threads: List<Thread?>?, // 线程信息
     val unhandled: Boolean?, // 是否是未处理的异常
 ) {
 
     data class App(
         val binaryArch: String?, // 应用的二进制架构，例如arm64
-        val buildUUID: String?, // 构建的唯一标识符
+//        val buildUUID: String?, // 构建的唯一标识符
         val duration: Int?, // 应用运行的总时长（毫秒）
         val durationInForeground: Int?, // 应用在前台运行的时长（毫秒）
         val id: String?, // 应用的包名，例如com.yzq.bugsnagapp
         val inForeground: Boolean?, // 应用当前是否在前台
         val isLaunching: Boolean?, // 是否处于启动阶段
-        val releaseStage: String?, // 发布阶段，例如development, staging, production
+//        val releaseStage: String?, // 发布阶段，例如development, staging, production
         val type: String?, // 平台类型，例如android
         val version: String?, // 应用版本号，例如1.0
         val versionCode: Int? // 应用版本代码，例如1
@@ -146,4 +146,5 @@ data class OriginalEventData(
             val method: String? // 方法名
         )
     }
+
 }

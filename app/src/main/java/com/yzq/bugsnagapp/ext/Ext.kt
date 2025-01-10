@@ -1,7 +1,10 @@
 package com.yzq.bugsnagapp.ext
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yzq.bugsnagapp.data.CrashInfo
 import com.yzq.bugsnagapp.data.OriginalEventData
+import com.yzq.bugsnagapp.utils.MoshiUtils
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -20,11 +23,12 @@ fun OriginalEventData.toCrashInfo(): CrashInfo {
                 .getOrNull()
         deviceBrand = eventData.device?.manufacturer
         osVersion = eventData.device?.osVersion
-        osName = eventData.device?.osName
+        osName = eventData.device?.runtimeVersions?.osBuild
         cpuArch = eventData.getCpuArchStr()
         crashThread = eventData.crashThread()
         crashReason = eventData.getReason()
         rooted = eventData.device?.jailbroken ?: false
+        originalData = MoshiUtils.toJson(eventData)
 
     }
 
@@ -80,3 +84,13 @@ private fun OriginalEventData.crashThread() = kotlin.runCatching {
 private fun OriginalEventData.getReason() = kotlin.runCatching {
     this.exceptions?.last()?.message
 }.getOrNull()
+
+
+private fun OriginalEventData.toJson(): String? {
+    val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
+    val adapter = moshi.adapter(OriginalEventData::class.java)
+
+    val json = adapter.toJson(this)
+    return json
+}

@@ -17,5 +17,6 @@ data class CrashInfo(
     var crashType: String? = "Native", // 异常类型，Native还是JS
     var rooted: Boolean = false, // 是否root
     var deviceId: String? = null, // 设备ID
-    var sessionid: String? = null // x23的sessionid
+    var sessionid: String? = null, // x23的sessionid
+    var originalData: String? = null // 更多的原始数据
 )
